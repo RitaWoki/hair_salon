@@ -1,0 +1,18 @@
+body{
+  background-image:url("../img/1b.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  text-decoration-color: white;
+}
+
+a{
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: inherit;
+  text-decoration-skip: objects;
+}
+
+#title{
+  width: 350px;
+}

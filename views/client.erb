@@ -1,0 +1,32 @@
+<div class="words">
+  <h1><%= @client.name() %>'s Page</h1>
+  <hr>
+
+  <h5><%= @client.name() %>'s stylist is: <a href="/stylists/<%= @stylist.id() %>"><%= @stylist.name() %></a></h5>
+
+  <h3>Update <%= @client.name() %></h3>
+  <form action="/clients/<%= @client.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <label for="new_client_name">New Name:</label>
+    <input id="new_client_name" name="new_client_name" type="text" placeholder="<%= @client.name() %>">
+
+    <label for="new_stylist_id">Select a Stylist</label>
+      <select id='new_stylist_id' name='new_stylist_id' type='text'>
+        <% @stylists.each() do |stylist| %>
+          <option value="<%= stylist.id()%>"> <%= stylist.name() %></option>
+        <% end %>
+      </select>
+    <button type="submit">Update</button>
+  </form>
+
+  <h3>Delete <%= @client.name() %></h3>
+  <form action="/clients/<%= @client.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit">Delete Client</button>
+  </form>
+
+  <hr>
+  <a href="/clients">Check our your clients</a>
+  <a href="/stylists">Check out your stylists</a>
+  <a href="/">Take me home</a>
+</div>

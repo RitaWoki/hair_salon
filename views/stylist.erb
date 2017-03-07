@@ -1,0 +1,41 @@
+<div class="container">
+  <h1><%= @stylist.name() %>'s Page</h1>
+  <hr>
+
+  <% if @stylist.clients().any?() %>
+    <h4><%= @stylist.name() %>'s clientel</h4>
+    <ul>
+      <% @stylist.clients().each() do |client| %>
+        <li><a href="/clients/<%= client.id()%>"><%= client.name() %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p><%= @stylist.name() %> has no clients yet! Low energy!</p>
+    <% end %>
+
+  <h4>Add a client for <%= @stylist.name() %></h4>
+  <form action="/stylists/<%=@stylist.id() %>" method="post">
+    <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+    <label for="stylist_client_name">Client Name</label>
+    <input id="stylist_client_name" name="stylist_client_name" type="text">
+    <button type="submit">Add Client</button>
+  </form>
+
+  <h4>Update <%= @stylist.name() %></h4>
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <label for="new_name">New Name:</label>
+    <input id="new_name" name="new_name" type="text">
+    <button type="submit">Update</button>
+  </form>
+
+  <h4>Delete <%= @stylist.name() %></h4>
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit">Delete Stylist</button>
+  </form>
+  <hr>
+  <a href="/stylists">Check out your stylists</a>
+  <a href="/clients">Check our your clients</a>
+  <a href="/">Take me home</a>
+</div>

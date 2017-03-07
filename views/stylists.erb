@@ -1,0 +1,27 @@
+<div class="words">
+  <h1>Your stylists</h1>
+
+  <h5>Click name to add clients, view a stylist's existing clients, or update stylist info<h5>
+
+  <% if @stylists.any?() %>
+    <ul>
+      <% @stylists.each() do |stylist| %>
+        <li><a href="/stylists/<%= stylist.id()%>"><%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Your stylists tried your food and quit their jobs, find new stylists!</p>
+  <% end %>
+  <h3>Add a new stylist:</h3>
+  <form style="display: inline;" action="/stylists" method="post">
+    <label for="name">Stylist Name</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Add Stylist</button>
+  </form>
+
+  <% if @stylists.any?() %>
+    <a href="/clients">Check our your clients</a>
+  <% end %>
+
+  <a href="/">Take me home</a>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+
+  <% if @stylists.any?() %>
+    <h1>Your Clients</h1>
+    <hr>
+
+    <h5>Click client name to view or update their information<h5>
+
+    <% if @clients.any?() %>
+      <ul>
+        <% @clients.each() do |client| %>
+          <li><a href="/clients/<%= client.id()%>"><%= client.name() %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Your clients went to another hair salon after trying your food. Find new clients!</p>
+    <% end %>
+
+    <h3>Add a new client:</h3>
+    <form action="/clients" method="post">
+      <label for="name">Client Name</label>
+      <input id="name" name="name" type="text">
+      <label for="stylist_id">Select a Stylist</label>
+        <select id='stylist_id' name='stylist_id' type='text'>
+          <% @stylists.each() do |stylist| %>
+            <option value="<%= stylist.id()%>"> <%= stylist.name() %></option>
+          <% end %>
+        </select>
+      <button type="submit">Add Client</button>
+    </form>
+
+    <hr>
+    <a href="/stylists">Check out your stylists</a>
+
+  <% else %>
+    <p>You need a stylist before adding a client, Guy. Get with it!</p>
+  <% end %>
+  <a href="/">Take me home</a>
+</div>
